@@ -17,5 +17,6 @@ link_libraries(
 add_executable(
         GLFW_GLAD_OpenGL
 
-        one_triangle.cpp
-        glad_src/glad.c)
+        glad_src/glad.c
+#        one_triangle.cpp
+        two_triangle.cpp)
