@@ -52,8 +52,7 @@ public:
                 gShaderFile.close();
                 geometryCode = gShaderStream.str();
             }
-        }
-        catch (std::ifstream::failure e) {
+        } catch (std::ifstream::failure e) {
             std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
             std::cout << e.what() << std::endl << e.code() << std::endl;
         }
@@ -84,11 +83,12 @@ public:
         ID = glCreateProgram();
         glAttachShader(ID, vertex);
         glAttachShader(ID, fragment);
-        if (geometryPath != nullptr)
+        if (geometryPath != nullptr) {
             glAttachShader(ID, geometry);
+        }
         glLinkProgram(ID);
         checkCompileErrors(ID, "PROGRAM");
-        // delete the shaders as they're linked into our program now and no longer necessery
+        // delete the shaders as they're linked into our program now and no longer necessary
         glDeleteShader(vertex);
         glDeleteShader(fragment);
         if (geometryPath != nullptr)
