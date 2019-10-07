@@ -7,7 +7,8 @@ include_directories(
         /usr/local/include/
         glad_header/
         glm/
-        header/)
+        header/
+        stb/)
 
 link_libraries(
         /usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib)
@@ -25,6 +26,7 @@ add_executable(
         #        learn_shader.cpp
         #        learn_shader_temp.cpp
         #        learn_shader_temp2.cpp
-        learn_shader.cpp
+        #                learn_shader.cpp
+        learn_texture_temp.cpp
         #        test.cpp
 )
