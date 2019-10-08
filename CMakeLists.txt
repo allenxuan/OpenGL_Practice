@@ -27,6 +27,7 @@ add_executable(
         #        learn_shader_temp.cpp
         #        learn_shader_temp2.cpp
         #                learn_shader.cpp
-        learn_texture_temp.cpp
+        #        learn_texture_temp.cpp
+        learn_texture.cpp
         #        test.cpp
 )
