@@ -29,6 +29,7 @@ add_executable(
         #                learn_shader.cpp
         #        learn_texture_temp.cpp
         #        learn_texture.cpp
-        learn_transformation.cpp
+        #        learn_transformation.cpp
+        learn_coordinate_temp.cpp
         #        test.cpp
 )
