@@ -30,6 +30,8 @@ add_executable(
         #        learn_texture_temp.cpp
         #        learn_texture.cpp
         #        learn_transformation.cpp
-        learn_coordinate_temp.cpp
+        #        learn_coordinate_temp.cpp
+        #                learn_coordinate_temp2.cpp
+        learn_coordinate.cpp
         #        test.cpp
 )
