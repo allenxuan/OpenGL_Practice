@@ -244,7 +244,10 @@ int main() {
             // calculate the model matrix for each object and pass it to shader before drawing
             glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
             model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
+            float angle = glfwGetTime() * 20.0f * i;
+            if (angle == 0) {
+                angle = glfwGetTime() * 2 * 20.0f;
+            }
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             ourShader.setMat4("model", model);
 
