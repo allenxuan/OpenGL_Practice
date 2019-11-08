@@ -52,9 +52,9 @@ public:
                 gShaderFile.close();
                 geometryCode = gShaderStream.str();
             }
-        } catch (std::ifstream::failure e) {
-            std::cout << "ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ" << std::endl;
-            std::cout << e.what() << std::endl << e.code() << std::endl;
+        } catch (std::ifstream::failure &e) {
+            std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
+            std::cout << "what:" << e.what() << std::endl << "code:" << e.code() << std::endl;
         }
         const char *vShaderCode = vertexCode.c_str();
         const char *fShaderCode = fragmentCode.c_str();
@@ -62,12 +62,12 @@ public:
         unsigned int vertex, fragment;
         // vertex shader
         vertex = glCreateShader(GL_VERTEX_SHADER);
-        glShaderSource(vertex, 1, &vShaderCode, NULL);
+        glShaderSource(vertex, 1, &vShaderCode, nullptr);
         glCompileShader(vertex);
         checkCompileErrors(vertex, "VERTEX");
         // fragment Shader
         fragment = glCreateShader(GL_FRAGMENT_SHADER);
-        glShaderSource(fragment, 1, &fShaderCode, NULL);
+        glShaderSource(fragment, 1, &fShaderCode, nullptr);
         glCompileShader(fragment);
         checkCompileErrors(fragment, "FRAGMENT");
         // if geometry shader is given, compile geometry shader
@@ -75,7 +75,7 @@ public:
         if (geometryPath != nullptr) {
             const char *gShaderCode = geometryCode.c_str();
             geometry = glCreateShader(GL_GEOMETRY_SHADER);
-            glShaderSource(geometry, 1, &gShaderCode, NULL);
+            glShaderSource(geometry, 1, &gShaderCode, nullptr);
             glCompileShader(geometry);
             checkCompileErrors(geometry, "GEOMETRY");
         }
@@ -169,14 +169,14 @@ private:
         if (type != "PROGRAM") {
             glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
             if (!success) {
-                glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+                glGetShaderInfoLog(shader, 1024, nullptr, infoLog);
                 std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog
                           << "\n -- --------------------------------------------------- -- " << std::endl;
             }
         } else {
             glGetProgramiv(shader, GL_LINK_STATUS, &success);
             if (!success) {
-                glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+                glGetProgramInfoLog(shader, 1024, nullptr, infoLog);
                 std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog
                           << "\n -- --------------------------------------------------- -- " << std::endl;
             }
