@@ -56,6 +56,7 @@ public:
             std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;
             std::cout << "what:" << e.what() << std::endl << "code:" << e.code() << std::endl;
         }
+        //const修饰指针指向的内容，内容不可变
         const char *vShaderCode = vertexCode.c_str();
         const char *fShaderCode = fragmentCode.c_str();
         // 2. compile shaders
