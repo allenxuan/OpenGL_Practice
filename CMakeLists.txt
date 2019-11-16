@@ -35,6 +35,7 @@ add_executable(
         #        learn_coordinate.cpp
         #        learn_camera_temp.cpp
         #        learn_camera_temp2.cpp
-        learn_camera_temp3.cpp
+        #        learn_camera_temp3.cpp
+        learn_camera.cpp
         #        test.cpp
 )
