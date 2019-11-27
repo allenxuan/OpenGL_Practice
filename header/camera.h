@@ -63,7 +63,15 @@ public:
 
     // Returns the view matrix calculated using Euler Angles and the LookAt Matrix
     glm::mat4 GetViewMatrix() {
-        return glm::lookAt(Position, Position + Front, Up);
+        //pass Up vector or WorldUpVector here?
+
+        //Luckily for us, GLM already does all this work for us. We only have to specify a camera position, a target position
+        // and a vector that represents the up vector in world space (the up vector we used for calculating the right vector).
+        // GLM then creates the LookAt matrix that we can use as our view matrix
+
+        //so we should pass WorldUp vector here.
+//        return glm::lookAt(Position, Position + Front, Up);
+        return glm::lookAt(Position, Position + Front, WorldUp);
     }
 
     // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
@@ -80,6 +88,8 @@ public:
     }
 
     // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
+    //其实在C++语言中，布尔类型的内部实现是用一个字节的整型来实现的，bool类型支持数学运算，编译器会在内部进行调整，非0为true，0 为 false
+    //unsigned char和boolean是等价的
     void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true) {
         xoffset *= MouseSensitivity;
         yoffset *= MouseSensitivity;
@@ -103,9 +113,9 @@ public:
     void ProcessMouseScroll(float yoffset) {
         if (Zoom >= 1.0f && Zoom <= 45.0f)
             Zoom -= yoffset;
-        if (Zoom <= 1.0f)
+        if (Zoom < 1.0f)
             Zoom = 1.0f;
-        if (Zoom >= 45.0f)
+        if (Zoom > 45.0f)
             Zoom = 45.0f;
     }
 
