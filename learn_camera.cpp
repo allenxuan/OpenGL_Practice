@@ -50,8 +50,8 @@ int main() {
 
     // glfw window creation
     // --------------------
-    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", NULL, NULL);
-    if (window == NULL) {
+    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "LearnOpenGL", nullptr, nullptr);
+    if (window == nullptr) {
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
         return -1;
@@ -71,11 +71,11 @@ int main() {
         return -1;
     }
 
-    // configure global opengl state
+    // configure global OpenGL state
     // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
-    // build and compile our shader zprogram
+    // build and compile our shader program
     // ------------------------------------
     Shader ourShader("/Users/allenxuan/CLionProjects/GLFW_GLAD OpenGL/shader_source/6.1.coordinate_systems.vs",
                      "/Users/allenxuan/CLionProjects/GLFW_GLAD OpenGL/shader_source/6.1.coordinate_systems.fs");
@@ -312,6 +312,7 @@ void mouse_callback(GLFWwindow *window, double xpos, double ypos) {
         lastX = xpos;
         lastY = ypos;
         firstMouse = false;
+        return;
     }
 
     float xoffset = xpos - lastX;
