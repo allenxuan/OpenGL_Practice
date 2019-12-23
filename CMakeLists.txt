@@ -38,6 +38,7 @@ add_executable(
         #        learn_camera_temp3.cpp
         #        learn_camera.cpp
         #        colors.cpp
-        basic_lighting_diffuse.cpp
+        #        basic_lighting_diffuse.cpp
+        basic_lighting_specular.cpp
         #        test.cpp
 )
