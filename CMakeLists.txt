@@ -8,6 +8,7 @@ include_directories(
         glad_header/
         glm/
         header/
+        imgui/
         stb/)
 
 link_libraries(
@@ -21,6 +22,12 @@ add_executable(
         GLFW_GLAD_OpenGL
 
         glad_src/glad.c
+        imgui/imgui.cpp
+        imgui/imgui_demo.cpp
+        imgui/imgui_draw.cpp
+        imgui/imgui_impl_glfw.cpp
+        imgui/imgui_impl_opengl3.cpp
+        imgui/imgui_widgets.cpp
         #        one_triangle.cpp
         #        two_triangle.cpp
         #        learn_shader.cpp
@@ -39,6 +46,7 @@ add_executable(
         #        learn_camera.cpp
         #        colors.cpp
         #        basic_lighting_diffuse.cpp
-        basic_lighting_specular.cpp
+        #        basic_lighting_specular.cpp
+        my_imgui_demo.cpp
         #        test.cpp
 )
