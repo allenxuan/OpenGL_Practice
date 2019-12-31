@@ -16,7 +16,9 @@
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLEW)
 #include <GL/glew.h>    // Initialize with glewInit()
 #elif defined(IMGUI_IMPL_OPENGL_LOADER_GLAD)
+
 #include <glad/glad.h>  // Initialize with gladLoadGL()
+
 #else
 #include IMGUI_IMPL_OPENGL_LOADER_CUSTOM
 #endif
@@ -31,13 +33,17 @@
 #pragma comment(lib, "legacy_stdio_definitions")
 #endif
 
-static void glfw_error_callback(int error, const char* description)
-{
+
+/*
+ 很明显，所有未加static修饰的函数和全局变量具有全局可见性，其他的源文件也能够访问。
+ static修饰函数和变量这一特性可以在不同的文件中定义同名函数和同名变量，而不必担心命名冲突。
+ static可以用作函数和变量的前缀，对于函数来讲，static的作用仅限于隐藏。这有点类似于C++中的名字空间。
+ */
+static void glfw_error_callback(int error, const char *description) {
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
-int main(int, char**)
-{
+int main(int, char **) {
     // Setup window
     glfwSetErrorCallback(glfw_error_callback);
     if (!glfwInit())
@@ -47,7 +53,7 @@ int main(int, char**)
 #if __APPLE__
     // GL 3.2 + GLSL 150
 //    const char* glsl_version = "#version 150";
-    const char* glsl_version = "#version 330 core";
+    const char *glsl_version = "#version 330 core"; //这里const 修饰指针指向的内容，则内容为不可变量
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 //    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -63,7 +69,7 @@ int main(int, char**)
 #endif
 
     // Create window with graphics context
-    GLFWwindow* window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
+    GLFWwindow *window = glfwCreateWindow(1280, 720, "Dear ImGui GLFW+OpenGL3 example", NULL, NULL);
     if (window == NULL)
         return 1;
     glfwMakeContextCurrent(window);
@@ -79,8 +85,7 @@ int main(int, char**)
 #else
     bool err = false; // If you use IMGUI_IMPL_OPENGL_LOADER_CUSTOM, your loader is likely to requires some form of initialization.
 #endif
-    if (err)
-    {
+    if (err) {
         fprintf(stderr, "Failed to initialize OpenGL loader!\n");
         return 1;
     }
@@ -88,7 +93,8 @@ int main(int, char**)
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiIO& io = ImGui::GetIO(); (void)io;
+    ImGuiIO &io = ImGui::GetIO();
+    (void) io;
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     //io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
@@ -121,8 +127,7 @@ int main(int, char**)
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
     // Main loop
-    while (!glfwWindowShouldClose(window))
-    {
+    while (!glfwWindowShouldClose(window)) {
         // Poll and handle events (inputs, window resize, etc.)
         // You can read the io.WantCaptureMouse, io.WantCaptureKeyboard flags to tell if dear imgui wants to use your inputs.
         // - When io.WantCaptureMouse is true, do not dispatch mouse input data to your main application.
@@ -144,28 +149,32 @@ int main(int, char**)
             static float f = 0.0f;
             static int counter = 0;
 
-            ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
+            ImGui::Begin(
+                    "Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-            ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+            ImGui::Text(
+                    "This is some useful text.");               // Display some text (you can use a format strings too)
             ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
             ImGui::Checkbox("Another Window", &show_another_window);
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+            ImGui::ColorEdit3("clear color", (float *) &clear_color); // Edit 3 floats representing a color
 
-            if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
+            if (ImGui::Button(
+                    "Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
                 counter++;
             ImGui::SameLine();
             ImGui::Text("counter = %d", counter);
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
+                        ImGui::GetIO().Framerate);
             ImGui::End();
         }
 
         // 3. Show another simple window.
-        if (show_another_window)
-        {
-            ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
+        if (show_another_window) {
+            ImGui::Begin("Another Window",
+                         &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;

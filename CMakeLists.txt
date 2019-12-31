@@ -46,7 +46,9 @@ add_executable(
         #        learn_camera.cpp
         #        colors.cpp
         #        basic_lighting_diffuse.cpp
-        #        basic_lighting_specular.cpp
-        my_imgui_demo.cpp
+        #                basic_lighting_specular.cpp
+        basic_lighting_specular_imgui_integrated.cpp
+        #        my_imgui_demo.cpp
+        #        c_plus_plus_test.cpp
         #        test.cpp
 )
