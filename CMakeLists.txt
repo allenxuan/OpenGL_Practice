@@ -48,7 +48,8 @@ add_executable(
 #        basic_lighting_diffuse.cpp
 #                basic_lighting_specular.cpp
         #        basic_lighting_specular_imgui_integrated.cpp
-        demo_src/lighting/materials/materials.cpp
+#        demo_src/lighting/materials/materials.cpp
+        demo_src/lighting/lighting_maps/lighting_maps_specular.cpp
         #        my_imgui_demo.cpp
         #        c_plus_plus_test.cpp
         #        test.cpp
