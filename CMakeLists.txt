@@ -45,11 +45,13 @@ add_executable(
         #        learn_camera_temp3.cpp
         #        learn_camera.cpp
         #        colors.cpp
-#        basic_lighting_diffuse.cpp
-#                basic_lighting_specular.cpp
+        #        basic_lighting_diffuse.cpp
+        #                basic_lighting_specular.cpp
         #        basic_lighting_specular_imgui_integrated.cpp
-#        demo_src/lighting/materials/materials.cpp
-        demo_src/lighting/lighting_maps/lighting_maps_specular.cpp
+        #        demo_src/lighting/materials/materials.cpp
+        #        demo_src/lighting/lighting_maps/lighting_maps_specular.cpp
+        #        demo_src/lighting/light_casters/light_casters_directional.cpp
+        demo_src/lighting/light_casters/light_casters_point.cpp
         #        my_imgui_demo.cpp
         #        c_plus_plus_test.cpp
         #        test.cpp
