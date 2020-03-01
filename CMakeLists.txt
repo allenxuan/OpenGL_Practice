@@ -51,8 +51,9 @@ add_executable(
         #        demo_src/lighting/materials/materials.cpp
         #        demo_src/lighting/lighting_maps/lighting_maps_specular.cpp
         #        demo_src/lighting/light_casters/light_casters_directional.cpp
-#        demo_src/lighting/light_casters/light_casters_point.cpp
-        demo_src/lighting/light_casters/light_casters_spot_soft.cpp
+        #        demo_src/lighting/light_casters/light_casters_point.cpp
+        #        demo_src/lighting/light_casters/light_casters_spot_soft.cpp
+        demo_src/lighting/multiple_lights/multiple_lights.cpp
         #        my_imgui_demo.cpp
         #        c_plus_plus_test.cpp
         #        test.cpp
