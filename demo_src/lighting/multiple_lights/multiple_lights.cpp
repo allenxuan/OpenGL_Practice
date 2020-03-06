@@ -1,9 +1,10 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#ifndef STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
-
 #include <stb_image.h>
+#endif
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -11,6 +12,8 @@
 
 #include <shader.h>
 #include <camera.h>
+#include <mesh.h>
+#include <model.h>
 
 #include <iostream>
 

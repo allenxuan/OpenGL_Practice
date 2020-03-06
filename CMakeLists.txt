@@ -12,7 +12,10 @@ include_directories(
         stb/)
 
 link_libraries(
-        /usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib)
+        /usr/local/lib/libglfw.3.3.dylib
+        #        /usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib
+        /usr/local/lib/libassimp.5.0.0.dylib
+)
 #if (APPLE)
 #    link_libraries(
 #            "-framework OpenGL")
@@ -53,7 +56,8 @@ add_executable(
         #        demo_src/lighting/light_casters/light_casters_directional.cpp
         #        demo_src/lighting/light_casters/light_casters_point.cpp
         #        demo_src/lighting/light_casters/light_casters_spot_soft.cpp
-        demo_src/lighting/multiple_lights/multiple_lights.cpp
+        #        demo_src/lighting/multiple_lights/multiple_lights.cpp
+        demo_src/model_loading/model_loading.cpp
         #        my_imgui_demo.cpp
         #        c_plus_plus_test.cpp
         #        test.cpp
